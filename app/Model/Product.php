@@ -59,7 +59,7 @@ class Product extends AppModel {
 			'className' => 'Image',
 			'foreignKey' => 'foreign_key',
 			'dependent' => true,
-			'conditions' => array('Image.model_class' => 'Product'),
+			'conditions' => array('Image.model_class' => 'Product', 'main_image' => 1),
 			'fields' => '',
 			'order' => '',
 			'limit' => '',

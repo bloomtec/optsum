@@ -6,7 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Category $Category
  */
 class CategoriesController extends AppController {
-
+	
+	public function get($id = null) {
+		return $this -> Category -> find('all', array('conditinos' => array('Category.id' => $id)));
+	}
+	
 	/**
 	 * index method
 	 *
@@ -71,6 +75,22 @@ class CategoriesController extends AppController {
 		}
 		if ($this -> request -> is('post') || $this -> request -> is('put')) {
 			if ($this -> Category -> save($this -> request -> data)) {
+				// Salvar/crear la imagen
+				$image = $this -> Category -> Image -> findById($this -> request -> data['Image']['id']);
+				if(!$image) {
+					$this -> Category -> Image -> create();
+					$image = array(
+						'Image' => array(
+							'model_class' => 'Category',
+							'foreign_key' => $this -> Category -> id,
+							'image' => $this -> request -> data['Image']['image'],
+							'main_image' => 1
+						)
+					);
+					$this -> Category -> Image -> save($image);
+				} else {
+					$this -> Category -> Image -> save($this -> request -> data);
+				}
 				$this -> Session -> setFlash(__('The category has been saved'));
 				$this -> redirect(array('action' => 'index'));
 			} else {

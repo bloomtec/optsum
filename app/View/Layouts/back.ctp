@@ -25,6 +25,7 @@
 		echo $this -> Html -> meta('icon');
 
 		echo $this -> Html -> css('cake.generic');
+		echo $this -> Html -> css('uploadify');
 		
 		echo $this -> Html -> script('jquery.min');
 		echo $this -> Html -> script('jquery.uploadify.min');

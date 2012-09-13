@@ -1,3 +1,16 @@
+<?php
+	$categories = $this -> requestAction('/categories/get');
+	$counter = 0;
+	foreach($categories as $key => $category) {
+		$counter += 1;
+		if (!($counter % 3)) {
+			echo $this -> element('front-category-view', array('servicio' => $category, 'ultimo' => 1));
+		} else {
+			echo $this -> element('front-category-view', array('servicio' => $category, 'ultimo' => 0));
+		}
+	}
+?>
+<!--
 <div class="articulo">
 	<span style="background: #bfcacf; color: #fff;" class="titulo"> Refrigeración industrial </span>
 	<span class="separador"></span>
@@ -26,3 +39,4 @@
 	<a href="#" class="mas"><img src="/img/mas.png" /></a>
 </div>
 <div style="clear: both;"></div>
+-->
