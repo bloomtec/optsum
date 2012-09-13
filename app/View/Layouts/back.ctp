@@ -24,34 +24,27 @@
 		<?php
 		echo $this -> Html -> meta('icon');
 
-		echo $this -> Html -> css('reset.css');
-		echo $this -> Html -> css('styles.css');
+		echo $this -> Html -> css('cake.generic');
+		
+		echo $this -> Html -> script('jquery.min');
+		echo $this -> Html -> script('jquery.uploadify.min');
+		echo $this -> Html -> script('swfobject');
+		echo $this -> Html -> script('upload');
 
 		echo $this -> fetch('meta');
 		echo $this -> fetch('css');
 		echo $this -> fetch('script');
 		?>
-		<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
-		<script type="text/javascript" src="/js/script.js"></script>
-
 	</head>
 	<body>
-		<div class="maquinas"></div>
 		<div id="main_container">
-			<div id="header">
-				<?php echo $this -> element('header'); ?>
-			</div>
-			<?php echo $this -> element('main_nav'); ?>
+			<div id="header"></div>
 			<div id="content">
 				<?php echo $this -> Session -> flash(); ?>
-
+				<?php echo $this -> element('back-actions'); ?>
 				<?php echo $this -> fetch('content'); ?>
-				<div style="clear: both;"></div>
 			</div>
-			<div id="footer">
-				<?php echo $this -> element('footer'); ?>
-			</div>
-
+			<div id="footer"></div>
 		</div>
 		<?php echo $this -> element('sql_dump'); ?>
 	</body>
