@@ -33,7 +33,6 @@
 		?>
 		<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js"></script>
 		<script type="text/javascript" src="/js/script.js"></script>
-
 	</head>
 	<body>
 		<div class="maquinas"></div>

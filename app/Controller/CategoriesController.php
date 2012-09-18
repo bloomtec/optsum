@@ -6,11 +6,11 @@ App::uses('AppController', 'Controller');
  * @property Category $Category
  */
 class CategoriesController extends AppController {
-	
+
 	public function get($id = null) {
 		return $this -> Category -> find('all', array('conditinos' => array('Category.id' => $id)));
 	}
-	
+
 	/**
 	 * index method
 	 *
@@ -33,7 +33,19 @@ class CategoriesController extends AppController {
 		if (!$this -> Category -> exists()) {
 			throw new NotFoundException(__('Invalid category'));
 		}
-		$this -> set('category', $this -> Category -> read(null, $id));
+		$category = $this -> Category -> read(null, $id);
+		$this -> set('category', $category);
+
+		$serviciosHeader = "
+						<span>" . $category['Category']['nombre'] . "</span>
+						<h1>OPTSUM INGENIERIA</h1>
+						<p>" . $category['Category']['descripcion'] . "</p>
+						";
+		$this -> set(compact('serviciosHeader'));
+
+		$imagenHeader = '<img class="foto_header" src="/img/servicios-header.png"/>';
+		$this -> set(compact('imagenHeader'));
+
 	}
 
 	/**
@@ -77,16 +89,9 @@ class CategoriesController extends AppController {
 			if ($this -> Category -> save($this -> request -> data)) {
 				// Salvar/crear la imagen
 				$image = $this -> Category -> Image -> findById($this -> request -> data['Image']['id']);
-				if(!$image) {
+				if (!$image) {
 					$this -> Category -> Image -> create();
-					$image = array(
-						'Image' => array(
-							'model_class' => 'Category',
-							'foreign_key' => $this -> Category -> id,
-							'image' => $this -> request -> data['Image']['image'],
-							'main_image' => 1
-						)
-					);
+					$image = array('Image' => array('model_class' => 'Category', 'foreign_key' => $this -> Category -> id, 'image' => $this -> request -> data['Image']['image'], 'main_image' => 1));
 					$this -> Category -> Image -> save($image);
 				} else {
 					$this -> Category -> Image -> save($this -> request -> data);

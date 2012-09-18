@@ -31,32 +31,32 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 
-/**
- * Controller name
- *
- * @var string
- */
+	/**
+	 * Controller name
+	 *
+	 * @var string
+	 */
 	public $name = 'Pages';
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
+	/**
+	 * This controller does not use a model
+	 *
+	 * @var array
+	 */
 	public $uses = array();
 
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- */
+	/**
+	 * Displays a view
+	 *
+	 * @param mixed What page to display
+	 * @return void
+	 */
 	public function display() {
 		$path = func_get_args();
 
 		$count = count($path);
 		if (!$count) {
-			$this->redirect('/');
+			$this -> redirect('/');
 		}
 		$page = $subpage = $title_for_layout = null;
 
@@ -69,24 +69,23 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->render(implode('/', $path));
+		$this -> set(compact('page', 'subpage', 'title_for_layout'));
+		$this -> render(implode('/', $path));
 	}
-	
-	public function home(){
-		
-		$serviciosHeader="<a href='/pages/refrigeracionindustrial'><span>refrigeración industrial</span></a>
+
+	public function home() {
+		$serviciosHeader = "<a href='/pages/refrigeracionindustrial'><span>refrigeración industrial</span></a>
 						<a href='/pages/refrigeracionindustrial'><span>montajes y mantenimiento</span></a>
 						<a href='/pages/refrigeracionindustrial'><span>tecnologia informática</span></a>";
 		$this -> set(compact('serviciosHeader'));
-		
-		$imagenHeader='<img class="foto_header" src="/img/imagen_header.png"/>';
+
+		$imagenHeader = '<img class="foto_header" src="/img/imagen_header.png"/>';
 		$this -> set(compact('imagenHeader'));
 	}
-	
-	public function refrigeracionindustrial(){
-		
-		$serviciosHeader="
+
+	public function refrigeracionindustrial() {
+
+		$serviciosHeader = "
 						<span>refrigeración industrial</span>
 						<h1>OPTSUM INGENIERIA</h1>
 						<p>
@@ -94,13 +93,14 @@ class PagesController extends AppController {
 						</p>
 						";
 		$this -> set(compact('serviciosHeader'));
-		
-		$imagenHeader='<img class="foto_header" src="/img/refrigeracion-header.png"/>';
+
+		$imagenHeader = '<img class="foto_header" src="/img/refrigeracion-header.png"/>';
 		$this -> set(compact('imagenHeader'));
 	}
-	
-	public function overlay(){
-		$this -> layout="ajax";
-		
+
+	public function overlay() {
+		$this -> layout = "ajax";
+
 	}
+
 }
