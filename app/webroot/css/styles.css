@@ -20,7 +20,7 @@ body {
 }
 #header {
 	background: url(../img/header_bg.jpg) top left no-repeat;
-	height: 530px;
+	height: 227px;
 }
 .logo {
 	display: block;
@@ -28,6 +28,9 @@ body {
 	width: 100%;
 	float: left;
 	margin-top: 11px;
+}
+.logo img{
+	width: 360px;
 }
 .foto_header {
 	float: left;
@@ -65,7 +68,7 @@ body {
 }
 #main_nav ul {
 	background: url(../img/nav_bg.png);
-	height: 47px;
+	float: left;
 }
 #main_nav li {
 	float: left;

@@ -10,6 +10,7 @@
 		}
 	}
 ?>
+
 <!--
 <div class="articulo">
 	<span style="background: #bfcacf; color: #fff;" class="titulo"> Refrigeración industrial </span>

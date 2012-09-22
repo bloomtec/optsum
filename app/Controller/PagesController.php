@@ -94,7 +94,7 @@ class PagesController extends AppController {
 						";
 		$this -> set(compact('serviciosHeader'));
 
-		$imagenHeader = '<img class="foto_header" src="/img/refrigeracion-header.png"/>';
+		$imagenHeader = '<img class="foto_header" src="/img/servicios-header.png"/>';
 		$this -> set(compact('imagenHeader'));
 	}
 

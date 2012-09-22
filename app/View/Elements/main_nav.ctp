@@ -16,4 +16,5 @@
 			<a href="#">contácto</a>
 		</li>
 	</ul>
+	<div style="clear: both;"></div>
 </div>
